@@ -31,12 +31,7 @@ public class Day7 {
         List<Directory> subDirectories = new ArrayList<>();
 
         public Directory getSubDirectory(String subDir) {
-            for (Directory dir : subDirectories) {
-                if (dir.getName().equals(subDir)) {
-                    return dir;
-                }
-            }
-            return null;
+            return subDirectories.stream().filter(a -> a.getName().equals(subDir)).findFirst().get();
         }
 
         public int getTotalSize() {
@@ -62,12 +57,8 @@ public class Day7 {
             }
 
             root.getTotalSize();
-            int answer = 0;
-            for (int a : ALL_SIZES) {
-                if (a <= 100_000 && a != 0) {
-                    answer = answer + a;
-                }
-            }
+
+            int answer = ALL_SIZES.stream().filter(a -> a <= 100_000 && a != 0).reduce(0, Integer::sum);
 
             if (answer != 95437) {
                 throw new Exception();
@@ -112,12 +103,7 @@ public class Day7 {
             int freeSpace = 70_000_000 - rootSize;
             int freeSpaceNeeded = 30_000_000 - freeSpace;
 
-            int answer = Integer.MAX_VALUE;
-            for (int a : ALL_SIZES) {
-                if (a >= freeSpaceNeeded && (a < answer)) {
-                    answer = a;
-                }
-            }
+            int answer = ALL_SIZES.stream().filter(a -> a >= freeSpaceNeeded).min(Integer::compare).get();
             if (answer != 24933642) {
                 throw new Exception();
             }
