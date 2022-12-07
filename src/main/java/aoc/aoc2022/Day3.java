@@ -1,4 +1,4 @@
-package aoc;
+package aoc.aoc2022;
 
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;

@@ -1,4 +1,4 @@
-package aoc;
+package aoc.aoc2022;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Day7 {
     private static final String FILE_NAME = "day7-test.txt";
-    public static final String SRC_MAIN_RESOURCES = "src/main/resources/";
+    public static final String SRC_MAIN_RESOURCES = "src/main/resources/aoc2022/";
 
     private static List<Integer> ALL_SIZES = new ArrayList<>();
 
