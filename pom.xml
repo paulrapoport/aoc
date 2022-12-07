@@ -8,33 +8,4 @@
     <artifactId>AoC2022</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <!-- Needed to pull snapshots from Nexus repository -->
-    <profiles>
-        <profile>
-            <id>allow-snapshots</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
-            <repositories>
-                <repository>
-                    <id>snapshots-repo</id>
-                    <url>http://alnpappjk1.aln.experian.com:8081/repository/maven-snapshots</url>
-                    <releases><enabled>false</enabled></releases>
-                    <snapshots><enabled>true</enabled></snapshots>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots-repo</id>
-            <name>nexus Snapshots</name>
-            <url>http://alnpappjk1.aln.experian.com:8081/repository/maven-snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>releases-repo</id>
-            <name>nexus Releases</name>
-            <url>http://alnpappjk1.aln.experian.com:8081/repository/maven-releases</url>
-        </repository>
-    </distributionManagement>
-
 </project>
