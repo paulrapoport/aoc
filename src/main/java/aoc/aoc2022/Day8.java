@@ -65,19 +65,17 @@ public class Day8 implements Puzzle {
                 row++;
             }
 
-            int answer = calculateScenic(forest);
-
+            int answer = getMostScenicTree(forest);
             if (answer != 368368) {
                 throw new Exception();
             }
-
             System.out.println("answer " + answer);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static int calculateScenic(Table<Integer, Integer, Integer> forest) {
+    private static int getMostScenicTree(Table<Integer, Integer, Integer> forest) {
         int rowSize = forest.row(0).size();
         int colSize = forest.column(0).size();
         int bestScore = 1;
