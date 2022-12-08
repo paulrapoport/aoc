@@ -13,9 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class Day8 {
+public class Day8 implements Puzzle {
     private static final String FILE_NAME = "day8.txt";
-    public static final String SRC_MAIN_RESOURCES = "src/main/resources/aoc2022/";
 
     public static void main(String[] args) throws Exception {
         part1();
