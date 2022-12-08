@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Day6 {
-    private static final String FILE_NAME = "aoc2022/day6.txt";
-    public static final String PATH = "src/main/resources/";
+    private static final String FILE_NAME = "day6.txt";
+    public static final String PATH = "src/main/resources/aoc2022/";
 
     public static void main(String[] args) throws Exception {
         part1();
