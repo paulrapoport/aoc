@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class Day8 implements Puzzle {
+public class Day8 extends Puzzle {
     private static final String FILE_NAME = "day8.txt";
 
     public static void main(String[] args) throws Exception {

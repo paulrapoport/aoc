@@ -11,7 +11,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Day7 implements Puzzle {
+public class Day7 extends Puzzle {
 
     public static final String FILE_NAME = "day7.txt";
 
