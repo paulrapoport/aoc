@@ -6,10 +6,13 @@ import org.apache.commons.lang3.tuple.MutablePair;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Day9 extends Puzzle {
     private static final Integer DAY = 9;
     private static final boolean IS_TEST = false;
+    public static final int NUMBER_OF_KNOTS = 9;
 
     public static void main(String[] args) throws Exception {
         part1();
@@ -56,51 +59,24 @@ public class Day9 extends Puzzle {
             Table<Integer, Integer, Integer> bridge
                     = HashBasedTable.create();
             bridge.put(0, 0, 1);
-            MutablePair<Integer, Integer> head = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail1 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail2 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail3 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail4 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail5 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail6 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail7 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail8 = MutablePair.of(0, 0);
-            MutablePair<Integer, Integer> tail9 = MutablePair.of(0, 0);
-
+            List<MutablePair<Integer, Integer>> listOfTails = new ArrayList<>();
+            for (int i = 0; i <= NUMBER_OF_KNOTS; i++) {
+                listOfTails.add(MutablePair.of(0, 0));
+            }
             while ((str = file.readLine()) != null) {
                 String[] command = str.split(" ");
                 String action = command[0];
                 int steps = Integer.parseInt(command[1]);
 
                 while (steps > 0) {
-                    doAction(head, action);
-                    if (!areTailHeadTouching(head, tail1)) {
-                        moveTail(head, tail1);
-                    }
-                    if (!areTailHeadTouching(tail1, tail2)) {
-                        moveTail(tail1, tail2);
-                    }
-                    if (!areTailHeadTouching(tail2, tail3)) {
-                        moveTail(tail2, tail3);
-                    }
-                    if (!areTailHeadTouching(tail3, tail4)) {
-                        moveTail(tail3, tail4);
-                    }
-                    if (!areTailHeadTouching(tail4, tail5)) {
-                        moveTail(tail4, tail5);
-                    }
-                    if (!areTailHeadTouching(tail5, tail6)) {
-                        moveTail(tail5, tail6);
-                    }
-                    if (!areTailHeadTouching(tail6, tail7)) {
-                        moveTail(tail6, tail7);
-                    }
-                    if (!areTailHeadTouching(tail7, tail8)) {
-                        moveTail(tail7, tail8);
-                    }
-                    if (!areTailHeadTouching(tail8, tail9)) {
-                        moveTail(tail8, tail9);
-                        bridge.put(tail9.getLeft(), tail9.getRight(), 1);
+                    doAction(listOfTails.get(0), action);
+                    for (int i = 0; i < listOfTails.size() - 1; i++) {
+                        if (!areTailHeadTouching(listOfTails.get(i), listOfTails.get(i + 1))) {
+                            moveTail(listOfTails.get(i), listOfTails.get(i + 1));
+                        }
+                        if (i == listOfTails.size() - 2) {
+                            bridge.put(listOfTails.get(i + 1).getLeft(), listOfTails.get(i + 1).getRight(), 1);
+                        }
                     }
                     steps--;
                 }
